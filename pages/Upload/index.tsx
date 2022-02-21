@@ -1,9 +1,16 @@
 import React, { useCallback, useState, VFC } from 'react';
 import { Section } from './styles';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+enum FileType {
+    JPG = 'JPG',
+    PNG = 'PNG'
+}
 const Upload: VFC = () => {
     const [imageSrc, setImageSrc] = useState(String);
     // const [file, setFile] = useState<React.SetStateAction<File | undefined>>(undefined);
+
     const getUserInfo = useCallback(async (formData: FormData) => {
         const config = {
             headers: {
@@ -14,8 +21,8 @@ const Upload: VFC = () => {
         try {
             const userData = await axios.post(`/v2/vision/face/detect/`, formData, config);
             console.log(userData);
-        } catch (err) {
-            console.log(err);
+        } catch (err: any) {
+            toast.error(err.msg as string, { position: 'top-center', autoClose: 2500 });
         }
     }, []);
     const createFormData = useCallback((fileObj: File): FormData => {
@@ -23,6 +30,7 @@ const Upload: VFC = () => {
         formData.append('image', fileObj);
         return formData;
     }, []);
+
     const onloadend = useCallback(
         (reader: FileReader, fileObj: File) => {
             reader.onload = () => {
@@ -45,18 +53,35 @@ const Upload: VFC = () => {
         },
         [onloadend]
     );
+    const fileTypeCheck = useCallback((filePath: string): boolean => {
+        const pathPoint: number = filePath.lastIndexOf('.');
+        const fileType: string = filePath.substring(pathPoint + 1, filePath.length).toUpperCase();
+        if (fileType === FileType.JPG || fileType === FileType.PNG) {
+            return true;
+        } else {
+            toast.error('Only image file can be uploaded!', {
+                position: 'top-center',
+                autoClose: 2500
+            });
+            return false;
+        }
+    }, []);
+
     const onChange = useCallback(
         (e: React.FormEvent<HTMLInputElement>) => {
-            encodeFileToBase64((e.target as HTMLInputElement).files?.[0]);
+            if (fileTypeCheck((e.target as HTMLInputElement).value)) {
+                encodeFileToBase64((e.target as HTMLInputElement).files?.[0]);
+            }
         },
-        [encodeFileToBase64]
+        [encodeFileToBase64, fileTypeCheck]
     );
 
     return (
         <Section>
             <label htmlFor="file">How old do i look (Click) </label>
-            <input type="file" id="file" accept="image/jpg,image/png" onChange={onChange} />
-            {imageSrc && <img src={imageSrc} alt="picture" />}
+            <input type="file" id="file" onChange={onChange} />
+            {imageSrc && <img src={imageSrc} accept="image/jpg,image/png" alt="picture" />}
+            <ToastContainer />
         </Section>
     );
 };
