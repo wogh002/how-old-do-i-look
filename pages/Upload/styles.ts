@@ -24,4 +24,10 @@ export const Section = styled.section`
         padding: 0;
         border: 0;
     }
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 1.5rem;
+    }
 `;
