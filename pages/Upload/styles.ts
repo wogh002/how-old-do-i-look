@@ -32,10 +32,11 @@ export const Section = styled.section`
     #spinner {
         width: 10rem;
         height: 10rem;
-        border: 15px solid ${({ theme: { colors } }) => colors.white};
-        /* border-top: 15px solid rgba(163, 151, 198, 1);
+        border: 1.5rem solid ${({ theme: { colors } }) => colors.white};
+        border-top: 1.5rem solid rgba(163, 151, 198, 1);
         border-radius: 50%;
-        animation: spin 2s linear infinite; */
+        animation: spin 500ms linear infinite;
+        margin-bottom: 1.5rem;
     }
     @keyframes spin {
         0% {

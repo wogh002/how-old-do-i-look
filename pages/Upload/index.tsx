@@ -6,25 +6,17 @@ import { IUserFace } from '@typings/db';
 import { FileType } from '@typings/enum';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from '@components/Image';
+import { getKakaoAPI } from '@utils/axios';
+
 const Upload: VFC = () => {
     const [imageSrc, setImageSrc] = useState(String);
     const [userData, setUserData] = useState<IUserFace | null>();
     const [userDataReq, setUserDataReq] = useState(false);
     const getUserInfo = useCallback(async (formData: FormData) => {
-        const config = {
-            headers: {
-                contentType: 'multipart/form-data',
-                Authorization: `KakaoAK ${process.env.NEXT_PUBLIC_API_KEY}`
-            }
-        };
         try {
             const {
                 data: { result }
-            }: AxiosResponse<any, any> = await axios.post(
-                `/v2/vision/face/detect/`,
-                formData,
-                config
-            );
+            } = await getKakaoAPI.post('/v2/vision/face/detect/', formData);
 
             if (result.faces.length !== 0) {
                 setUserDataReq(false);
@@ -95,7 +87,6 @@ const Upload: VFC = () => {
         },
         [encodeFileToBase64, fileTypeCheck]
     );
-
     return (
         <Section>
             {userDataReq ? (
@@ -104,9 +95,10 @@ const Upload: VFC = () => {
                 <label htmlFor="file"> ⭐ How old do i look (Click) </label>
             )}
             <input type="file" id="file" onChange={onChange} />
-            {userData && imageSrc && <Image imageSrc={imageSrc} userData={userData} alt="person" />}
+            {!userDataReq && userData && imageSrc && (
+                <Image imageSrc={imageSrc} userData={userData} alt="person" />
+            )}
             <ToastContainer />
-            <div id="spinner"></div>
         </Section>
     );
 };
