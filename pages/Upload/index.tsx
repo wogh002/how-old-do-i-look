@@ -1,16 +1,15 @@
 import React, { useCallback, useState, VFC } from 'react';
 import { Section } from './styles';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+import { IUserFace } from '@typings/db';
+import { FileType } from '@typings/enum';
 import 'react-toastify/dist/ReactToastify.css';
-enum FileType {
-    JPG = 'JPG',
-    PNG = 'PNG'
-}
+import Image from '@components/Image';
 const Upload: VFC = () => {
     const [imageSrc, setImageSrc] = useState(String);
-    // const [file, setFile] = useState<React.SetStateAction<File | undefined>>(undefined);
-
+    const [userData, setUserData] = useState<IUserFace | null>();
+    const [userDataReq, setUserDataReq] = useState(false);
     const getUserInfo = useCallback(async (formData: FormData) => {
         const config = {
             headers: {
@@ -19,12 +18,31 @@ const Upload: VFC = () => {
             }
         };
         try {
-            const userData = await axios.post(`/v2/vision/face/detect/`, formData, config);
-            console.log(userData);
+            const {
+                data: { result }
+            }: AxiosResponse<any, any> = await axios.post(
+                `/v2/vision/face/detect/`,
+                formData,
+                config
+            );
+
+            if (result.faces.length !== 0) {
+                setUserDataReq(false);
+                setUserData(result.faces[0].facial_attributes);
+            } else {
+                toast.error(`얼굴인식이 되지 않습니다. 다른 사진을 올려주세요`, {
+                    position: 'top-center',
+                    autoClose: 2500
+                });
+                setUserDataReq(false);
+                setImageSrc('');
+                setUserData(null);
+            }
         } catch (err: any) {
             toast.error(err.msg as string, { position: 'top-center', autoClose: 2500 });
         }
     }, []);
+
     const createFormData = useCallback((fileObj: File): FormData => {
         const formData = new FormData();
         formData.append('image', fileObj);
@@ -59,16 +77,18 @@ const Upload: VFC = () => {
         if (fileType === FileType.JPG || fileType === FileType.PNG) {
             return true;
         } else {
-            toast.error('Only image file can be uploaded!', {
+            toast.error('이미지 파일만 업로드 해주세요 :)', {
                 position: 'top-center',
                 autoClose: 2500
             });
+            setUserDataReq(false);
             return false;
         }
     }, []);
 
     const onChange = useCallback(
         (e: React.FormEvent<HTMLInputElement>) => {
+            setUserDataReq(true);
             if (fileTypeCheck((e.target as HTMLInputElement).value)) {
                 encodeFileToBase64((e.target as HTMLInputElement).files?.[0]);
             }
@@ -78,12 +98,16 @@ const Upload: VFC = () => {
 
     return (
         <Section>
-            <label htmlFor="file">How old do i look (Click) </label>
+            {userDataReq ? (
+                <div id="spinner"></div>
+            ) : (
+                <label htmlFor="file"> ⭐ How old do i look (Click) </label>
+            )}
             <input type="file" id="file" onChange={onChange} />
-            {imageSrc && <img src={imageSrc} accept="image/jpg,image/png" alt="picture" />}
+            {userData && imageSrc && <Image imageSrc={imageSrc} userData={userData} alt="person" />}
             <ToastContainer />
+            <div id="spinner"></div>
         </Section>
     );
 };
-
 export default Upload;

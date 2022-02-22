@@ -6,5 +6,8 @@ declare module 'styled-components' {
             blue: string;
             white: string;
         };
+        size: {
+            desktop: string;
+        };
     }
 }
