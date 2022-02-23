@@ -1,6 +1,5 @@
 import React, { useCallback, useState, VFC } from 'react';
 import { Section } from './styles';
-import axios, { AxiosResponse } from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import { IUserFace } from '@typings/db';
 import { FileType } from '@typings/enum';
@@ -50,9 +49,6 @@ const Upload: VFC = () => {
         },
         [createFormData, getUserInfo]
     );
-    // 데이터 URL로 만드는 방법입니다.
-    //  base64로 인코딩했다는 뜻인데,
-    // base64로 인코딩한 경우 브라우저가 이 문자열을 인식해서 원래 데이터로 만들어줍니다.
     const encodeFileToBase64 = useCallback(
         (fileObj: File | undefined) => {
             const reader: FileReader = new FileReader();
