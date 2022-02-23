@@ -11,9 +11,11 @@
 
 <img alt="styled-components" src ="https://img.shields.io/badge/styled-components-DB7093?style=flat-square&logo=styled-components&logoColor=DB7093"/> <img alt="Vercel" src ="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=Vercel&logoColor=white"/> <img alt="npm" src ="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white"/>
 
+
 ### API
 <img alt="Kakao" src ="https://img.shields.io/badge/Kakao-FFCD00?style=flat-square&logo=Kakao&logoColor=white"/> 
 
+![howolddoilook](https://user-images.githubusercontent.com/79042667/155349947-34fbb0e9-f1c9-403c-831a-3a000eae7c91.gif)
 *****
 
 ### 프로젝트 
