@@ -1,5 +1,5 @@
 import React, { useCallback, useState, VFC } from 'react';
-import { Section } from './styles';
+import { Section } from '@styles/Upload/styles';
 import { toast, ToastContainer } from 'react-toastify';
 import { IUserFace } from '@typings/db';
 import { FileType } from '@typings/enum';
