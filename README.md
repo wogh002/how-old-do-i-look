@@ -14,12 +14,11 @@
 ### API
 <img alt="Kakao" src ="https://img.shields.io/badge/Kakao-FFCD00?style=flat-square&logo=Kakao&logoColor=white"/> 
 
-![image](https://user-images.githubusercontent.com/79042667/155333231-813788f2-5300-4787-a557-92b480ca1741.png)
-
-
 *****
 
 ### 프로젝트 
+
+![image](https://user-images.githubusercontent.com/79042667/155345143-410589d6-b81f-4970-9365-490d3fad976d.png)
 
 Kakao API 를 이용해 유저의 사진을 업로드 후, 성별과 나이를 추정 <br>
 next.js vercel 을 이용해 프로젝트 배포 <br>
