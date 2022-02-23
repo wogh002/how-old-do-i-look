@@ -4,7 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { IUserFace } from '@typings/db';
 import { FileType } from '@typings/enum';
 import 'react-toastify/dist/ReactToastify.css';
-import Image from '@components/Image';
+import ImageComponent from '@components/Image';
 import { getKakaoAPI } from '@utils/axios';
 
 const Upload: VFC = () => {
@@ -92,7 +92,7 @@ const Upload: VFC = () => {
             )}
             <input type="file" id="file" onChange={onChange} />
             {!userDataReq && userData && imageSrc && (
-                <Image imageSrc={imageSrc} userData={userData} alt="person" />
+                <ImageComponent imageSrc={imageSrc} userData={userData} alt="person" />
             )}
             <ToastContainer />
         </Section>

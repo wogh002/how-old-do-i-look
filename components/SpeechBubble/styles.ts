@@ -2,6 +2,7 @@ import styled from 'styled-components';
 export const Dl = styled.dl`
     position: absolute;
     right: 0;
+    bottom: 0;
     width: 50%;
     font-size: 1.2rem;
     background-color: ${({ theme: { colors } }) => colors.white};

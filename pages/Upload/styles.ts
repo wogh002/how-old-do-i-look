@@ -13,7 +13,7 @@ export const Section = styled.section`
         font-size: 1.8rem;
         font-weight: 700;
         opacity: 0.8;
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
         cursor: pointer;
         :hover {
             opacity: 1;
