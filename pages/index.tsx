@@ -7,7 +7,7 @@ const Home: NextPage = () => {
             <NextSeo
                 openGraph={{
                     type: 'website',
-                    url: 'https://www.example.com/page',
+                    url: 'https://how-old-do-i-look.vercel.app/',
                     title: 'How old do i look 😎',
                     description: '나이 추정 APP',
                     images: [
