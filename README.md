@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# How old do i look?
 
-## Getting Started
+### 👉 [Project 바로가기](https://parkjaeho-wogh002.vercel.app/ "프로젝트 바로가기")
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Skills 📝
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/> <img alt="CSS3" src ="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/> <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<img alt="React" src ="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/> <img alt="nodeJS" src ="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=white"/> <img alt="Next.js" src ="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=Next.js&logoColor=white"/>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+<img alt="styled-components" src ="https://img.shields.io/badge/styled-components-DB7093?style=flat-square&logo=styled-components&logoColor=DB7093"/> <img alt="Vercel" src ="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=Vercel&logoColor=white"/> <img alt="npm" src ="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white"/>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### API
+<img alt="Kakao" src ="https://img.shields.io/badge/Kakao-FFCD00?style=flat-square&logo=Kakao&logoColor=white"/> 
 
-## Learn More
+![image](https://user-images.githubusercontent.com/79042667/155333231-813788f2-5300-4787-a557-92b480ca1741.png)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+*****
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 프로젝트 
 
-## Deploy on Vercel
+Kakao API 를 이용해 유저의 사진을 업로드 후, 성별과 나이를 추정 <br>
+next.js vercel 을 이용해 프로젝트 배포 <br>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Vercel은 Next.js 개발 팀에서 만든 호스팅 사이트
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+*****
